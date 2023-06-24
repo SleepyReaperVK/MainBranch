@@ -59,7 +59,9 @@ const FormScreen = ({ navigation }) => {
           </MapView>
         ) : (
           <View style={styles.imagePreview}>
-            <Text style={{ backgroundColor: "white" }}>pre-View location</Text>
+            <Text style={{ backgroundColor: "white" }}>
+              No location picked.
+            </Text>
           </View>
         )}
       </View>
