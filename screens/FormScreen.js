@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, Button, TextInput, StyleSheet } from "react-native";
+import { View, Text, Button, TextInput, StyleSheet ,ScrollView , Alert} from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { addLocation } from "../src/store/locationsSlice";
 import CameraImageComponent from "../src/components/CameraImageComponent";
@@ -20,10 +20,14 @@ const FormScreen = ({ navigation }) => {
       lat: selectedLocation.lat,
       lng: selectedLocation.lng,
     };
-    console.log("Form " + newLocation.lat);
     dispatch(addLocation(newLocation));
     setLocationTitle("");
-    navigation.navigate("Home");
+    Alert.alert(
+      "Location : " + newLocation.title,
+      "Was Added to Home Screen.",
+      [{ text: "OK" }]
+    );
+    
   };
 
   const handleNavigateToMap = () => {
@@ -31,8 +35,9 @@ const FormScreen = ({ navigation }) => {
   };
 
   return (
+    <ScrollView>
     <View>
-      <Text>Title</Text>
+      <Text style={styles.title}>Title</Text>
       <TextInput
         style={{ borderWidth: 1, marginBottom: 16, padding: 8 }}
         placeholder="Location Title"
@@ -69,6 +74,7 @@ const FormScreen = ({ navigation }) => {
       <CameraImageComponent onTakeImage={setCapturedImage} />
       <Button title="Add Location" onPress={handleAddLocation} />
     </View>
+    </ScrollView>
   );
 };
 
@@ -78,13 +84,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-  },
-  card: {
-    backgroundColor: "#fff",
-    borderRadius: 8,
-    padding: 16,
-    marginBottom: 16,
-    elevation: 2,
   },
   title: {
     fontSize: 18,

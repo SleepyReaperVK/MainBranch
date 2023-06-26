@@ -52,6 +52,7 @@ export default function App() {
             component={FormStack}
             options={{
               headerShown: false,
+              scrollEnabled: true,
               tabBarLabel: "Add",
               tabBarIcon: ({ color, size }) => (
                 <Ionicons name="add-circle" size={size} color={color} />

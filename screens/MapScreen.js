@@ -52,15 +52,15 @@ const MapScreen = ({ navigation }) => {
   const handleMapPress = (event) => {
     const { latitude, longitude } = event.nativeEvent.coordinate;
     const location = { latitude, longitude };
-    console.log("Map  " + location.latitude);
     dispatch(
       setSelectedLocation({ lat: location.latitude, lng: location.longitude })
     );
-    console.log("MapSelect  " + selectedLocation.lat);
   };
 
   const handleSaveLocation = () => {
+    setUserLocation(null);
     navigation.goBack();
+
   };
 
   return (
@@ -71,15 +71,14 @@ const MapScreen = ({ navigation }) => {
           region={userLocation}
           onPress={handleMapPress}
         >
-          {selectedLocation && (
             <Marker
-              coordinate={{
-                latitude: selectedLocation.lat,
-                longitude: selectedLocation.lng,
-              }}
-              draggable
-            />
-          )}
+            title="Hello World"
+            coordinate={{
+              latitude: selectedLocation ? selectedLocation.lat : userLocation.latitude,
+              longitude: selectedLocation ? selectedLocation.lng  : userLocation.longitude,
+            }}
+            draggable
+          />
         </MapView>
       ) : (
         <Text>Loading...</Text>
