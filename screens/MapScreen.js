@@ -7,27 +7,10 @@ import * as Location from "expo-location";
 import { Ionicons } from "@expo/vector-icons";
 
 const MapScreen = ({ navigation }) => {
-  //map follows the selectedLocation , if no selectedLocation will center around currentUserLocation
-
+  //map follows the selectedLocation , if no selectedLocation will center around userLocation
   const [userLocation, setUserLocation] = useState(null);
   const selectedLocation = useSelector((state) => state.local.selectedLocation);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    // Set the header options for the screen
-    navigation.setOptions({
-      headerRight: () => (
-        <Ionicons
-          name="save-outline"
-          size={30}
-          color="black"
-          onPress={handleSaveLocation}
-          style={{ marginRight: 16 }}
-        />
-      ),
-    });
-    getLocationPermission();
-  }, []);
 
   const getLocationPermission = async () => {
     const { status } = await Location.requestForegroundPermissionsAsync();
@@ -49,6 +32,25 @@ const MapScreen = ({ navigation }) => {
     });
   };
 
+
+  useEffect(() => {
+    // Set the header options for the screen
+    navigation.setOptions({
+      headerRight: () => (
+        <Ionicons
+          name="save-outline"
+          size={30}
+          color="black"
+          onPress={handleSaveLocation}
+          style={{ marginRight: 16 }}
+        />
+      ),
+    });
+    getLocationPermission();
+  }, []);
+
+
+
   const handleMapPress = (event) => {
     const { latitude, longitude } = event.nativeEvent.coordinate;
     const location = { latitude, longitude };
@@ -60,11 +62,11 @@ const MapScreen = ({ navigation }) => {
   const handleSaveLocation = () => {
     setUserLocation(null);
     navigation.goBack();
-
-  };
+  }
 
   return (
     <View style={styles.container}>
+
       {userLocation ? (
         <MapView
           style={styles.map}

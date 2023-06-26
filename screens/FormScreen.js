@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, Button, TextInput, StyleSheet ,ScrollView , Alert} from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { addLocation } from "../src/store/locationsSlice";
+import { addLocation , setSelectedLocation } from "../src/store/locationsSlice";
 import CameraImageComponent from "../src/components/CameraImageComponent";
 import MapView, { Marker } from "react-native-maps";
 
@@ -22,6 +22,7 @@ const FormScreen = ({ navigation }) => {
     };
     dispatch(addLocation(newLocation));
     setLocationTitle("");
+    dispatch(setSelectedLocation(null));
     Alert.alert(
       "Location : " + newLocation.title,
       "Was Added to Home Screen.",
