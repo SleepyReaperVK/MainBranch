@@ -5,6 +5,10 @@ const storyAvatarsUnits = [
       storyArray: [
         "https://www.littleblackdress.co.uk/wp-content/uploads/2022/11/kim-new1.jpg",
         "https://i.pinimg.com/originals/c4/38/aa/c438aa02a73baa376d654aa1ee6b3858.png",
+        "https://www.littleblackdress.co.uk/wp-content/uploads/2022/11/kim-new1.jpg",
+        "https://i.pinimg.com/originals/c4/38/aa/c438aa02a73baa376d654aa1ee6b3858.png",
+        "https://www.littleblackdress.co.uk/wp-content/uploads/2022/11/kim-new1.jpg",
+        "https://i.pinimg.com/originals/c4/38/aa/c438aa02a73baa376d654aa1ee6b3858.png",
       ],
     },
     {

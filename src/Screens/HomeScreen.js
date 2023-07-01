@@ -1,11 +1,25 @@
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import React,{useEffect}from 'react';
+import { View, StyleSheet} from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
+import {  useFocusEffect } from '@react-navigation/native';
+
 
 import ProfileImage from '../Componts/ProfileImage';
 import storyAvatarsUnits from '../mockData/Data'; // Import your data.js file
+import { setStoryIndex } from '../Redux/storySlice';
+
 
 const HomeScreen = () => {
+  const dispatch = useDispatch();
+  const storyIndex = useSelector((state) => state.story.storyIndex);
+
+  useFocusEffect(() => {
+    if(storyIndex !== 0)
+    dispatch(setStoryIndex(0));
+  })
+
   return (
+   
     <View style={styles.container}>
       {storyAvatarsUnits.map((data, index) => (
         <View key={index} style={styles.profileImageContainer}>
