@@ -9,7 +9,7 @@ import LoadingBars from '../Componts/StoryScreen/LoadingBars';
 const Card = ({ children }) => {
   return <View style={styles.card}>{children}</View>;
 };
-
+// remove  route to redux 
 const StoryScreen = ({navigation, route }) => {
   const { storyArray } = route.params;
   const dispatch = useDispatch();
@@ -65,7 +65,7 @@ const StoryScreen = ({navigation, route }) => {
 
           </TouchableOpacity>
 
-          <View style={styles.container}> 
+          <View style={styles.containerButtom}> 
 
           <View style={styles.eventInfo}>
               <Card>
@@ -106,6 +106,10 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+    justifyContent: 'flex-end',
+  },
+  containerButtom: {
+    flex: 0.2,
     justifyContent: 'flex-end',
   },
   row: {
