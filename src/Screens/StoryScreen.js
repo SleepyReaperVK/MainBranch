@@ -65,7 +65,7 @@ const StoryScreen = ({navigation, route }) => {
           <View style={styles.imageBackground}>
             <LoadingBars storyArray={storyArray} storyIndex={storyIndex} isPaused={isPaused} />
             <TouchableOpacity style={styles.xButton} onPress={()=> navigation.goBack()}>
-            <Ionicons name="close-circle-outline" color="red" size={32} />
+            <Ionicons name="close-circle-outline" color="auto" size={48} />
               </TouchableOpacity>
           </View>
 
@@ -85,17 +85,16 @@ const StoryScreen = ({navigation, route }) => {
 
             
             <View style={styles.row}>
-            <TouchableOpacity onPress={handleLikePress}>
+            <TouchableOpacity style={{flex:0.1 }} onPress={handleLikePress}>
             {isLike ? (
-              <Ionicons name="heart-sharp" color="red" size={32} />
+              <Ionicons name="heart-sharp" color="red" size={48} />
               ) : (
-              <Ionicons name="heart-outline" size={32} />
+              <Ionicons name="heart-outline" size={48} />
               )}
               </TouchableOpacity>
               <View style={styles.commentBar}>
-              <TouchableOpacity style={{flex:0.2 ,borderWidth:2,
-    borderColor:'white', }}>
-               <Ionicons name="send-outline" color="red" size={32} />
+              <TouchableOpacity style={{flex:0.1 }}>
+               <Ionicons name="send-outline" color="auto" size={48} />
               </TouchableOpacity>
                 <TextInput style={styles.commentInput} placeholder="Send a Message..." color="red" />
               </View>
@@ -145,7 +144,7 @@ const styles = StyleSheet.create({
     top: 10,
     right: 10,
     borderRadius: 16,
-    backgroundColor:"red" ,
+    backgroundColor:"transperent" ,
     alignItems:'center',
     size:32,
   },
