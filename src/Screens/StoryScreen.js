@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Button, ImageBackground, View, TouchableOpacity, StyleSheet, Dimensions, TextInput, Text } from 'react-native';
+import {  ImageBackground, View, TouchableOpacity, StyleSheet, Dimensions, TextInput, Text } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 import { setStoryIndex } from '../Redux/storySlice';
 import LoadingBars from '../Componts/StoryScreen/LoadingBars';
@@ -15,7 +16,9 @@ const StoryScreen = ({navigation, route }) => {
   const dispatch = useDispatch();
   const storyIndex = useSelector((state) => state.story.storyIndex);
   const [isPaused, setIsPaused] = useState(false);
-
+  const [isLike, setIsLike] = useState(false);
+  
+  
   const handlePress = (event) => {
     const { locationX } = event.nativeEvent;
     const screenWidth = Dimensions.get('window').width;
@@ -51,6 +54,9 @@ const StoryScreen = ({navigation, route }) => {
     setIsPaused(false);
     console.log('handleRelease');
   };
+  const handleLikePress = () => {
+    setIsLike(!isLike)
+  }
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
@@ -58,8 +64,8 @@ const StoryScreen = ({navigation, route }) => {
         <TouchableOpacity style={styles.container} activeOpacity={1} onPress={handlePress} onLongPress={handleLongPress} onPressOut={handleRelease}>
           <View style={styles.imageBackground}>
             <LoadingBars storyArray={storyArray} storyIndex={storyIndex} isPaused={isPaused} />
-            <TouchableOpacity style={[styles.button , {backgroundColor:"red" , width:'8%' } ]} onPress={()=> navigation.goBack()}>
-                <Text>X</Text>
+            <TouchableOpacity style={styles.xButton} onPress={()=> navigation.goBack()}>
+            <Ionicons name="close-circle-outline" color="red" size={32} />
               </TouchableOpacity>
           </View>
 
@@ -69,7 +75,7 @@ const StoryScreen = ({navigation, route }) => {
 
           <View style={styles.eventInfo}>
               <Card>
-                <Text>Event Name</Text>
+                <Text style={{fontSize:16, fontWeight:'bold', color:'rgba(0, 0, 0, 1)'}}>Event Name</Text>
                 <Text>Dist</Text>
                 <TouchableOpacity style={styles.button}>
                 <Text>ToEvent</Text>
@@ -79,15 +85,19 @@ const StoryScreen = ({navigation, route }) => {
 
             
             <View style={styles.row}>
-              <TouchableOpacity style={styles.button}>
-                <Text>Like</Text>
+            <TouchableOpacity onPress={handleLikePress}>
+            {isLike ? (
+              <Ionicons name="heart-sharp" color="red" size={32} />
+              ) : (
+              <Ionicons name="heart-outline" size={32} />
+              )}
               </TouchableOpacity>
-
               <View style={styles.commentBar}>
-              <TouchableOpacity style={{flex:0.2}}>
-                <Text>Send</Text>
+              <TouchableOpacity style={{flex:0.2 ,borderWidth:2,
+    borderColor:'white', }}>
+               <Ionicons name="send-outline" color="red" size={32} />
               </TouchableOpacity>
-                <TextInput style={styles.commentInput} placeholder="Send a Message..." />
+                <TextInput style={styles.commentInput} placeholder="Send a Message..." color="red" />
               </View>
             </View>
           </View>
@@ -95,6 +105,7 @@ const StoryScreen = ({navigation, route }) => {
     </SafeAreaView>
   );
 };
+
 
 const styles = StyleSheet.create({
   imageBackground: {
@@ -118,29 +129,45 @@ const styles = StyleSheet.create({
     padding:10,
   },
   button: {
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+    width:'10',
     marginRight: 10,
+    marginBottom: 15 ,
     paddingVertical: 5,
     paddingHorizontal: 10,
     backgroundColor: 'red',
     borderRadius: 4,
   },
+  xButton :{
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    borderRadius: 16,
+    backgroundColor:"red" ,
+    alignItems:'center',
+    size:32,
+  },
   commentBar: {
     flex: 1,
-    backgroundColor: '#fff',
-    borderRadius: 4,
-    paddingHorizontal: 10,
+    height:'100%',
     flexDirection: "row-reverse",
     alignItems: 'center',
+    borderWidth:2,
+    borderColor:'white',
   },
   commentInput: {
     flex: 1,
+    height:'100%',
+    backgroundColor: 'transperent',
   },
   eventInfo: {},
   safeAreaView: {
     flex: 1,
   },
   card: {
-    backgroundColor: '#fff',
+    backgroundColor: 'rgba(211, 211, 211, 0.6)',
     borderRadius: 8,
     padding: 10,
     elevation: 2,

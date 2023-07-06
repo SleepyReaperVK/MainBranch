@@ -1,6 +1,7 @@
 import React, { useState, useEffect ,useRef } from 'react';
 import { View, StyleSheet, Animated } from 'react-native';
 
+
 const LoadingBar = ({ Index, onFinishLoading, storyIndex, isPaused }) => {
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [isCompleted, setIsCompleted] = useState(false);
@@ -75,19 +76,18 @@ const LoadingBar = ({ Index, onFinishLoading, storyIndex, isPaused }) => {
 const styles = StyleSheet.create({
   loadingBarContainer: {
     flex: 1,
-    height: '100%',
-    backgroundColor: 'transparent',
-    paddingHorizontal: 2,
-    borderColor: '#ffffff',
-    borderWidth: 2,
+    height: '50%',
     borderRadius: 8,
+    backgroundColor: 'rgba(47, 79, 79,0.8)',
     marginEnd:4,
+    overflow:'hidden',
+    
   },
   loadingBar: {
     height: '100%',
     width: '100%',
     borderRadius: 8,
-    backgroundColor: '#FF0000', // Red color
+    backgroundColor: 'rgba(245, 255, 250,0.8)', // Red color
   },
 });
 
