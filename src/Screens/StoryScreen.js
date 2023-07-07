@@ -104,7 +104,7 @@ const StoryScreen = ({navigation, route }) => {
     </SafeAreaView>
   );
 };
-
+// Comment
 
 const styles = StyleSheet.create({
   imageBackground: {
