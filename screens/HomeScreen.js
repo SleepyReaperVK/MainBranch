@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{useEffect} from "react";
 import {
   View,
   Text,
@@ -11,12 +11,19 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { setSelectedLocation } from "../src/store/locationsSlice";
 import MapView, { Marker } from "react-native-maps";
+import CameraTypeOn from "../src/components/CameraTypeOn";
+import AppPremissions from '../src/components/Premissions/AppPermissions';
+import CameraOn from "../src/components/CameraOn";
 
 const HomeScreen = () => {
   const locations = useSelector((state) => state.local.locations);
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    AppPremissions.initAppPermissions()
+  }, []);
+  
   const handleLocationPress = (itemData) => {
     console.log("Home " + itemData);
     const { lat, lng } = itemData;
@@ -62,6 +69,7 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
+       <CameraOn/>
       {locations.length === 0 ? (
         <Text>Empty...</Text>
       ) : (
