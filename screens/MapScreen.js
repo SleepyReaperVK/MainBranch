@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setSelectedLocation } from "../src/store/locationsSlice";
 import * as Location from "expo-location";
 import { Ionicons } from "@expo/vector-icons";
+import MapPinSVG from "../localSVG/MapPinSVG";
 
 const MapScreen = ({ navigation }) => {
   //map follows the selectedLocation , if no selectedLocation will center around userLocation
@@ -80,7 +81,12 @@ const MapScreen = ({ navigation }) => {
               longitude: selectedLocation ? selectedLocation.lng  : userLocation.longitude,
             }}
             draggable
-          />
+            >
+              <View>
+                <MapPinSVG  />
+              </View>
+
+            </Marker>
         </MapView>
       ) : (
         <Text>Loading...</Text>
