@@ -9,6 +9,9 @@ import HomeScreen from "./screens/HomeScreen";
 import FormScreen from "./screens/FormScreen";
 import DataScreen from "./screens/DataScreen";
 import MapScreen from "./screens/MapScreen";
+import StoryCameraScreen from "./src/components/StoryCameraScreen";
+import ProfileCameraScreen from "./src/components/ProfileCameraScreen";
+import CameraOn from "./src/components/CameraOn";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -38,7 +41,7 @@ export default function App() {
         <Tab.Navigator>
           <Tab.Screen
             name="Home"
-            component={HomeStack}
+            component={ProfileCameraScreen}
             options={{
               headerShown: false,
               tabBarLabel: "Home",
