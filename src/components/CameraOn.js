@@ -96,18 +96,18 @@ const CameraOn = ({ cameraType = 'flippable' }) => {
 
       {/* Take Picture Button */}
       <TouchableOpacity onPress={takePicture} style={{ position: 'absolute', bottom: 20, alignSelf: 'center' }}>
-        <Text style={{ fontSize: 18, color: 'white' }}>Take Picture</Text>
+        <Text style={{ fontSize: 18, color: '#000' }}>Take Picture</Text>
       </TouchableOpacity>
 
       {/* Save to Gallery Button */}
       <TouchableOpacity onPress={saveToGallery} style={{ position: 'absolute', bottom: 60, left: 20 }}>
-        <Text style={{ fontSize: 18, color: 'white' }}>Save to Gallery</Text>
+        <Text style={{ fontSize: 18, color: '#000'  }}>Save to Gallery</Text>
       </TouchableOpacity>
 
       {/* Flip Camera Button (only visible in 'flippable' mode) */}
       {cameraType === 'flippable' && (
         <TouchableOpacity onPress={flipCamera} style={{ position: 'absolute', bottom: 60, right: 20 }}>
-          <Text style={{ fontSize: 18, color: 'white' }}>Flip Camera</Text>
+          <Text style={{ fontSize: 18, color: '#000' }}>Flip Camera</Text>
         </TouchableOpacity>
       )}
     </View>

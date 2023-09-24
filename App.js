@@ -12,6 +12,7 @@ import MapScreen from "./screens/MapScreen";
 import StoryCameraScreen from "./src/components/StoryCameraScreen";
 import ProfileCameraScreen from "./src/components/ProfileCameraScreen";
 import CameraOn from "./src/components/CameraOn";
+import TestGroundNavigator from './screens/navigation/TestGroundNavigator/TestGroundNavigator'
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -70,6 +71,20 @@ export default function App() {
               tabBarIcon: ({ color, size }) => (
                 <Ionicons
                   name="folder-open-outline"
+                  size={size}
+                  color={color}
+                />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="TestGround"
+            component={TestGroundNavigator}
+            options={{
+              tabBarLabel: "TestGra",
+              tabBarIcon: ({ color, size }) => (
+                <Ionicons
+                  name="barbell-outline"
                   size={size}
                   color={color}
                 />
