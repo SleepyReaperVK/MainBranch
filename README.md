@@ -8,4 +8,5 @@ https://github.com/SleepyReaperVK/MainBranch/assets/106259214/3e547065-5505-4895
 git clone https://github.com/SleepyReaperVK/MainBranch.git<br/>
 cd MainBranch<br/>
 npm install<br/>
-react-native run android<br/>
+npm start<br/>
+**Make sure to have a running Android/iOS emulator or a phone with the [Expo app](https://expo.io/).**
